@@ -18,10 +18,16 @@
 
 ## Phase 3 — Polish (later)
 - [ ] Consider Higgsfield-generated hero/project imagery
-- [ ] Deploy to GitHub Pages
+- [ ] Deploy to GitHub Pages (blocked: private repo + Free plan can't host Pages — needs public repo or GitHub Pro)
 - [ ] OG/meta tags + favicon
 - [ ] Lighthouse audit
 
+## Deployment
+- Repo: https://github.com/aakash-tir/portfolio-page (**private**)
+- Owner chose private-with-no-live-URL (2026-07-02). View locally on port 8765.
+- To publish later: make repo public (free Pages at aakash-tir.github.io/portfolio-page) or upgrade to GitHub Pro. Re-add a deploy workflow or use Settings → Pages → deploy from branch.
+
 ## Log
 - 2026-07-02: v1 built (all Phase 1 items). Placeholders marked `<!-- TEMP -->` in HTML.
+- 2026-07-02: Pushed to private GitHub repo. Pages deploy deferred per owner (Free plan can't serve private Pages).
 - 2026-07-02: Phase 2 content pass — filled all sections from resume, new-grad SWE/ML positioning, added stats/résumé/LinkedIn/phone, project category filter. All TEMP markers removed.

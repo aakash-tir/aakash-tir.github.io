@@ -15,4 +15,4 @@ python -m http.server 8765
 - `css/style.css` — theme tokens + layout + animations
 - `js/main.js` — particles, typing effect, scroll reveals, project tabs
 
-Deployed via GitHub Pages (see `.github/workflows/deploy.yml`).
+> Private repo — not deployed. Run locally, or publish to GitHub Pages later (make the repo public, or upgrade to GitHub Pro for private Pages).
