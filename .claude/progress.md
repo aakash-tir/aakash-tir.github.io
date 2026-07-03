@@ -30,4 +30,6 @@
 ## Log
 - 2026-07-02: v1 built (all Phase 1 items). Placeholders marked `<!-- TEMP -->` in HTML.
 - 2026-07-02: Pushed to private GitHub repo. Pages deploy deferred per owner (Free plan can't serve private Pages).
+- 2026-07-02: Made repo public, renamed to `aakash-tir.github.io`, deployed live at https://aakash-tir.github.io/ (verified all assets 200).
+- 2026-07-02: Added CI gate (`.github/workflows/ci.yml`) + merge policy (`.claude/rules/merge-to-main.md`). Checks: JS syntax, publish readiness (asset integrity + no TEMP), html-validate, stylelint. Branch protection requires them before merging to main.
 - 2026-07-02: Phase 2 content pass — filled all sections from resume, new-grad SWE/ML positioning, added stats/résumé/LinkedIn/phone, project category filter. All TEMP markers removed.
