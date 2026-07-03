@@ -1,25 +1,26 @@
 # Deployment Checklist — root user site
 
-Target: **https://aakash-tir.github.io/**
+Target: **https://aakash-tir.github.io/** — ✅ LIVE
 
 ## Pre-flight (site readiness)
-- [ ] `index.html` exists at the repo root
-- [ ] All asset paths are relative (no leading `/`) so they resolve at the root domain
-- [ ] `.nojekyll` present (skips Jekyll processing)
-- [ ] Page renders with no JavaScript console errors
-- [ ] In-page navigation and links work
+- [x] `index.html` exists at the repo root
+- [x] All asset paths are relative (no leading `/`) so they resolve at the root domain
+- [x] `.nojekyll` present (skips Jekyll processing)
+- [x] Page renders with no JavaScript console errors
+- [x] In-page navigation and links work; portrait + résumé PDF exist and are git-tracked
 
 ## Deploy
-- [ ] Repo is public
-- [ ] Repo renamed to `aakash-tir.github.io` (required for the root URL)
-- [ ] Local `origin` remote updated to the new name
-- [ ] GitHub Pages enabled — source: `main` branch, `/` root
-- [ ] Latest `main` pushed
+- [x] Repo is public
+- [x] Repo renamed to `aakash-tir.github.io` (required for the root URL)
+- [x] Local `origin` remote updated to the new name
+- [x] GitHub Pages enabled — source: `main` branch, `/` root
+- [x] Latest `main` pushed
 
 ## Post-deploy
-- [ ] Live URL returns HTTP 200
-- [ ] CSS and JS load over HTTPS (no mixed-content / 404s)
+- [x] Live URL returns HTTP 200
+- [x] CSS, JS, portrait image, and résumé PDF all load over HTTPS (200, no 404s)
+- [x] Live render verified by screenshot — no console/request errors
 
 ## Known / deferred (not blockers)
-- Placeholder `<!-- TEMP -->` text still in About, Timeline, and two project descriptions.
-- LinkedIn icon is a placeholder link.
+- LinkedIn now links to a real profile; résumé and photo are real.
+- Nothing outstanding for the deploy itself.
