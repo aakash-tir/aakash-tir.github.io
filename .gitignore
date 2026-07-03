@@ -1,0 +1,8 @@
+# Local working / session files (not part of the site)
+input.md
+output.md
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
