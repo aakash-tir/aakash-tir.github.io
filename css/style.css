@@ -393,6 +393,29 @@ a:hover { text-decoration: underline; }
 }
 
 /* ============ Timeline ============ */
+#timeline { position: relative; overflow: hidden; }
+#timeline .container { position: relative; z-index: 1; }
+
+.clock-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+.clock-bg svg {
+  width: min(90vh, 96vw);
+  height: auto;
+}
+.clock-face,
+.clock-tick { fill: none; stroke: rgba(255, 255, 255, 0.07); stroke-width: 2.5; }
+.clock-hand { stroke: rgba(255, 255, 255, 0.11); stroke-linecap: round; }
+.clock-center { fill: rgba(255, 255, 255, 0.11); }
+
 .timeline {
   list-style: none;
   position: relative;
