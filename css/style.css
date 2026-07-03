@@ -683,6 +683,68 @@ a:hover { text-decoration: underline; }
   border-top: 1px solid var(--border);
 }
 
+/* ============ Scroll skydiver ============ */
+#skydiver {
+  position: fixed;
+  top: 0;
+  right: 16px;
+  width: 8vh;
+  height: 10vh;
+  z-index: 40;
+  pointer-events: none;
+  color: var(--text);
+  transform: translateY(10vh);
+  will-change: transform;
+}
+#skydiver svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Only the active phase's pose is shown */
+#skydiver .pose { display: none; }
+#skydiver[data-phase="plane"] .pose-plane,
+#skydiver[data-phase="freefall"] .pose-freefall,
+#skydiver[data-phase="parachute"] .pose-parachute,
+#skydiver[data-phase="superman"] .pose-superman,
+#skydiver[data-phase="land"] .pose-land { display: block; }
+
+/* Idle motion within a pose */
+#skydiver[data-phase="parachute"] .canopy {
+  transform-origin: 50px 20px;
+  animation: chuteSway 3.2s ease-in-out infinite;
+}
+@keyframes chuteSway {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+
+#skydiver[data-phase="freefall"] .pose-freefall {
+  animation: fallFlutter 0.5s ease-in-out infinite alternate;
+}
+@keyframes fallFlutter {
+  from { transform: translateX(-1.5px); }
+  to { transform: translateX(1.5px); }
+}
+
+#skydiver[data-phase="land"] .wave-arm {
+  transform-origin: 50px 50px;
+  animation: handWave 0.55s ease-in-out infinite alternate;
+}
+@keyframes handWave {
+  from { transform: rotate(-10deg); }
+  to { transform: rotate(14deg); }
+}
+
+#skydiver[data-phase="superman"] .pose-superman {
+  animation: superBob 1.6s ease-in-out infinite alternate;
+}
+@keyframes superBob {
+  from { transform: translateY(-2px); }
+  to { transform: translateY(2px); }
+}
+
 /* ============ Reveal animations ============ */
 .reveal {
   opacity: 0;
@@ -719,6 +781,7 @@ a:hover { text-decoration: underline; }
   .section { padding: 4rem 0; }
 
   .scroll-hint { display: none; }
+  #skydiver { display: none; }
 
   .nav-links { gap: 1rem; }
   .nav-links a { font-size: 0.85rem; }
@@ -755,4 +818,5 @@ a:hover { text-decoration: underline; }
   .stat:hover { transform: none; }
   .status-in-progress .status-dot { animation: none; }
   .page-arrow:hover:not(:disabled) { transform: none; }
+  #skydiver { display: none; }
 }
