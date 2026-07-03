@@ -1,0 +1,40 @@
+name: CI
+
+# Gate for main: every check here must pass before a change may be merged
+# and published to https://aakash-tir.github.io/. See .claude/rules/merge-to-main.md.
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: JS syntax check
+        run: |
+          for f in js/*.js; do
+            echo "node --check $f"
+            node --check "$f"
+          done
+
+      - name: Publish readiness (asset integrity + no TEMP placeholders)
+        run: node scripts/checks/verify.mjs
+
+      - name: HTML validation
+        run: npx --yes html-validate@8 index.html
+
+      - name: CSS lint
+        run: npx --yes stylelint@16 "css/**/*.css"

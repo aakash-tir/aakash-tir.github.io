@@ -8,6 +8,7 @@ Interactive single-page portfolio for Aakash Tirathdas. Static site: vanilla HTM
 - `.claude/progress.md` — build phases and current status; update it when finishing a phase
 
 ## Conventions
+- **Merging to `main` publishes to production.** Never merge unless all CI checks pass and the change is up to publish standard — see `.claude/rules/merge-to-main.md`.
 - Files: `index.html`, `css/style.css`, `js/main.js`. Keep this three-file structure; no frameworks or npm unless the owner asks.
 - Theme tokens live as CSS custom properties in `:root` at the top of `style.css` — change colors there, not inline.
 - All scroll animations go through the `.reveal` + IntersectionObserver pattern in `main.js`.

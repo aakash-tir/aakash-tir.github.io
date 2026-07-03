@@ -17,11 +17,11 @@
 /* ============ Base ============ */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
-
 /* Hide the scrollbar chrome while keeping the page scrollable
    (wheel, trackpad, touch, and keyboard all still work). */
 html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-h);
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* old Edge/IE */
 }

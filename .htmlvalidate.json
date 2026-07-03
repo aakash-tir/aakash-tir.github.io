@@ -1,0 +1,12 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "no-inline-style": "off",
+    "prefer-native-element": "off",
+    "no-implicit-button-type": "off",
+    "wcag/h63": "off",
+    "void-style": "off",
+    "tel-non-breaking": "off",
+    "aria-label-misuse": "off"
+  }
+}
