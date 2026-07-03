@@ -695,7 +695,7 @@ a:hover { text-decoration: underline; }
 #skydiver {
   position: fixed;
   top: 0;
-  right: 16px;
+  right: 2px;
   width: 8vh;
   height: 10vh;
   z-index: 40;
