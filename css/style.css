@@ -19,6 +19,14 @@
 
 html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
 
+/* Hide the scrollbar chrome while keeping the page scrollable
+   (wheel, trackpad, touch, and keyboard all still work). */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* old Edge/IE */
+}
+html::-webkit-scrollbar { width: 0; height: 0; display: none; } /* WebKit */
+
 body {
   font-family: var(--font);
   background: var(--bg);
