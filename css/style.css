@@ -96,6 +96,12 @@ a:hover { text-decoration: underline; }
 }
 .nav-logo:hover { text-decoration: none; color: var(--accent); }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -110,14 +116,15 @@ a:hover { text-decoration: underline; }
 }
 .nav-links a:hover, .nav-links a.active { color: var(--accent); text-decoration: none; }
 
-.nav-links .nav-cta {
+.nav-cta {
   color: var(--accent);
   border: 1px solid var(--accent);
   padding: 0.4rem 1rem;
   border-radius: 8px;
   transition: background 0.2s ease;
+  white-space: nowrap;
 }
-.nav-links .nav-cta:hover { background: var(--accent-soft); }
+.nav-cta:hover { background: var(--accent-soft); text-decoration: none; }
 
 /* ============ Hero ============ */
 .hero {
@@ -478,7 +485,10 @@ a:hover { text-decoration: underline; }
 }
 .timeline-card h3 { font-size: 1.15rem; margin-bottom: 0.15rem; }
 .timeline-org { color: var(--accent); font-size: 0.9rem; margin-bottom: 0.5rem; }
-.timeline-card p:last-child { color: var(--muted); font-size: 0.95rem; }
+.timeline-desc p { color: var(--muted); font-size: 0.95rem; margin: 0; }
+
+/* Expand/collapse toggle — only used on mobile (hidden on desktop) */
+.timeline-toggle { display: none; }
 
 /* ============ Projects ============ */
 .project-tabs {
@@ -492,6 +502,9 @@ a:hover { text-decoration: underline; }
   margin: 1.5rem 0 2.5rem;
   gap: 4px;
 }
+
+/* Mobile two-group filters are hidden on desktop */
+.filters-mobile { display: none; }
 .tab-divider {
   width: 1px;
   align-self: stretch;
@@ -806,6 +819,13 @@ a:hover { text-decoration: underline; }
   .hero-actions { justify-content: center; }
   .portrait-frame { width: min(260px, 62vw); }
   .portrait-frame::before { transform: translate(12px, 12px); }
+
+  /* Nav stays right-aligned (links next to Contact), just more compact */
+  .nav-inner { padding: 0 1rem; }
+  .nav-right { gap: 1rem; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.85rem; }
+  .nav-cta { padding: 0.3rem 0.75rem; font-size: 0.85rem; }
 }
 
 @media (max-width: 720px) {
@@ -814,9 +834,27 @@ a:hover { text-decoration: underline; }
   .scroll-hint { display: none; }
   #skydiver { display: none; }
 
-  .nav-links { gap: 1rem; }
-  .nav-links a { font-size: 0.85rem; }
-  .nav-links .nav-cta { padding: 0.3rem 0.7rem; }
+  /* Mobile: two stacked groups, each a single scrollable line.
+     The block shrinks to the wider group's width (not the whole screen). */
+  .filters-desktop { display: none; }
+  .filters-mobile {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+    max-width: 100%;
+    margin: 1.5rem 0 2.5rem;
+  }
+  .filters-mobile .project-tabs {
+    margin: 0;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filters-mobile .project-tabs::-webkit-scrollbar { display: none; }
+  .filters-mobile .tab { flex-shrink: 0; }
 
   .timeline::before { left: 8px; }
   .timeline-item,
@@ -832,6 +870,56 @@ a:hover { text-decoration: underline; }
   .timeline-item:nth-child(even).reveal { transform: translateY(28px); }
   .timeline-item.reveal.visible,
   .timeline-item:nth-child(even).reveal.visible { transform: translateY(0); }
+
+  /* Collapse cards on mobile: show date/title/org, hide description behind an arrow */
+  .timeline-desc {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease;
+  }
+  .timeline-card.expanded .timeline-desc {
+    max-height: 40rem;
+    opacity: 1;
+    margin-top: 0.6rem;
+  }
+  .timeline-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.4rem auto 0;
+    padding: 0.2rem 0.4rem;
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .timeline-toggle:hover { color: var(--accent); }
+  .timeline-toggle svg { transition: transform 0.3s ease; }
+  .timeline-card.expanded .timeline-toggle svg { transform: rotate(180deg); }
+}
+
+/* Phone-only nav: pin logo (left) + Contact (right); middle links scroll/loop */
+@media (max-width: 500px) {
+  .nav-inner { gap: 0.6rem; padding: 0 1rem; }
+  .nav-logo { flex-shrink: 0; }
+  .nav-right { flex: 1; min-width: 0; gap: 0.6rem; }
+  .nav-links {
+    flex: 1;
+    min-width: 0;
+    gap: 1.4rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links li { flex-shrink: 0; }
+  .nav-links a { font-size: 0.9rem; white-space: nowrap; }
+  .nav-cta { flex-shrink: 0; padding: 0.3rem 0.8rem; font-size: 0.9rem; }
 }
 
 /* ============ Reduced motion ============ */
@@ -850,4 +938,5 @@ a:hover { text-decoration: underline; }
   .status-in-progress .status-dot { animation: none; }
   .page-arrow:hover:not(:disabled) { transform: none; }
   #skydiver { display: none; }
+  .timeline-desc, .timeline-toggle svg { transition: none; }
 }
