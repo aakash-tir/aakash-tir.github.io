@@ -217,14 +217,31 @@
       <div class="container">
         <h2 class="section-title reveal"><span class="section-num">03.</span> Projects</h2>
         <p class="section-sub reveal">A selection of what I've built. Filter by area.</p>
-        <div class="project-tabs reveal" role="tablist" aria-label="Project category filter">
-          <button class="tab active" role="tab" aria-selected="true" data-filter="all" id="tab-all" aria-controls="project-grid">All</button>
-          <button class="tab" role="tab" aria-selected="false" data-filter="ai-ml" id="tab-ai-ml" aria-controls="project-grid">AI &amp; ML</button>
-          <button class="tab" role="tab" aria-selected="false" data-filter="data" id="tab-data" aria-controls="project-grid">Data</button>
-          <button class="tab" role="tab" aria-selected="false" data-filter="software" id="tab-software" aria-controls="project-grid">Software</button>
+        <!-- Desktop: area + status in one row, combining -->
+        <div class="project-tabs filters-desktop reveal" role="tablist" aria-label="Filter projects">
+          <button class="tab active" role="tab" aria-selected="true" data-area="all" aria-controls="project-grid">All</button>
+          <button class="tab" role="tab" aria-selected="false" data-area="ai-ml" aria-controls="project-grid">AI &amp; ML</button>
+          <button class="tab" role="tab" aria-selected="false" data-area="data" aria-controls="project-grid">Data</button>
+          <button class="tab" role="tab" aria-selected="false" data-area="software" aria-controls="project-grid">Software</button>
           <span class="tab-divider" aria-hidden="true"></span>
-          <button class="tab" role="tab" aria-selected="false" data-filter="completed" id="tab-completed" aria-controls="project-grid">Completed</button>
-          <button class="tab" role="tab" aria-selected="false" data-filter="in-progress" id="tab-in-progress" aria-controls="project-grid">In Progress</button>
+          <button class="tab active" role="tab" aria-selected="true" data-status="all" aria-controls="project-grid">All</button>
+          <button class="tab" role="tab" aria-selected="false" data-status="completed" aria-controls="project-grid">Completed</button>
+          <button class="tab" role="tab" aria-selected="false" data-status="in-progress" aria-controls="project-grid">In Progress</button>
+        </div>
+
+        <!-- Mobile: two rows (area + status) that combine -->
+        <div class="filters-mobile reveal">
+          <div class="project-tabs" role="tablist" aria-label="Filter projects by area">
+            <button class="tab active" role="tab" aria-selected="true" data-area="all" aria-controls="project-grid">All</button>
+            <button class="tab" role="tab" aria-selected="false" data-area="ai-ml" aria-controls="project-grid">AI &amp; ML</button>
+            <button class="tab" role="tab" aria-selected="false" data-area="data" aria-controls="project-grid">Data</button>
+            <button class="tab" role="tab" aria-selected="false" data-area="software" aria-controls="project-grid">Software</button>
+          </div>
+          <div class="project-tabs" role="tablist" aria-label="Filter projects by status">
+            <button class="tab active" role="tab" aria-selected="true" data-status="all" aria-controls="project-grid">All</button>
+            <button class="tab" role="tab" aria-selected="false" data-status="completed" aria-controls="project-grid">Completed</button>
+            <button class="tab" role="tab" aria-selected="false" data-status="in-progress" aria-controls="project-grid">In Progress</button>
+          </div>
         </div>
         <div class="project-grid reveal" id="project-grid" role="tabpanel" aria-live="polite">
           <!-- Cards rendered by js/main.js from the PROJECTS array -->
