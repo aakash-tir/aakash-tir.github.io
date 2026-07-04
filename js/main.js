@@ -115,7 +115,8 @@ const SORTED_PROJECTS = [...PROJECTS].sort((a, b) =>
   (b.added || "").localeCompare(a.added || "")
 );
 
-const PAGE_SIZE = 6;
+// 3 cards per page on phones, 6 on larger screens.
+const pageSize = () => (window.matchMedia("(max-width: 720px)").matches ? 3 : 6);
 let currentFilter = "all";
 let currentPage = 0;
 
@@ -146,6 +147,7 @@ function cardHTML(p, i) {
 }
 
 function renderProjects() {
+  const PAGE_SIZE = pageSize();
   const items = SORTED_PROJECTS.filter((p) => projectMatches(p, currentFilter));
   const totalPages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
   if (currentPage > totalPages - 1) currentPage = totalPages - 1;
@@ -194,6 +196,21 @@ nextBtn.addEventListener("click", () => {
   currentPage++;
   renderProjects();
 });
+
+// Re-paginate when crossing the mobile/desktop breakpoint (page size changes).
+let wasMobile = window.matchMedia("(max-width: 720px)").matches;
+window.addEventListener(
+  "resize",
+  () => {
+    const isMobile = window.matchMedia("(max-width: 720px)").matches;
+    if (isMobile !== wasMobile) {
+      wasMobile = isMobile;
+      currentPage = 0;
+      renderProjects();
+    }
+  },
+  { passive: true }
+);
 
 renderProjects();
 
@@ -499,6 +516,88 @@ if (!prefersReducedMotion) {
   );
 
   update();
+})();
+
+/* ============ Mobile nav marquee ============ */
+// On phones the middle links (About/Experience/Projects/Résumé) auto-loop
+// horizontally. Touching/scrolling pauses on the current spot for 5s, then the
+// loop resumes. The logo and Contact stay pinned (handled in CSS).
+(function () {
+  const list = document.querySelector(".nav-links");
+  if (!list) return;
+  const mql = window.matchMedia("(max-width: 720px)");
+
+  const SPEED = 0.4; // px per frame
+  let rafId = null;
+  let paused = false;
+  let resumeTimer = null;
+  let clones = [];
+  let loopWidth = 0;
+
+  function step() {
+    if (!paused && loopWidth > 0) {
+      let x = list.scrollLeft + SPEED;
+      if (x >= loopWidth) x -= loopWidth;
+      list.scrollLeft = x;
+    }
+    rafId = requestAnimationFrame(step);
+  }
+
+  function pauseInteract() {
+    paused = true;
+    if (resumeTimer) clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => {
+      paused = false;
+    }, 5000); // hold on the scrolled-to spot for 5s, then resume
+  }
+
+  const INTERACTION_EVENTS = ["pointerdown", "touchstart", "touchmove", "wheel"];
+
+  function enable() {
+    if (rafId !== null) return; // already running
+    if (prefersReducedMotion) return; // leave it manually scrollable, no loop
+    loopWidth = list.scrollWidth;
+    if (loopWidth <= list.clientWidth + 4) {
+      loopWidth = 0;
+      return; // links already fit — no marquee or clones needed
+    }
+    // Duplicate the items so the scroll can wrap seamlessly.
+    Array.from(list.children).forEach((li) => {
+      const c = li.cloneNode(true);
+      c.setAttribute("aria-hidden", "true");
+      c.classList.add("nav-clone");
+      list.appendChild(c);
+      clones.push(c);
+    });
+    INTERACTION_EVENTS.forEach((ev) =>
+      list.addEventListener(ev, pauseInteract, { passive: true })
+    );
+    if (!prefersReducedMotion) rafId = requestAnimationFrame(step);
+  }
+
+  function disable() {
+    if (rafId !== null) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+    if (resumeTimer) {
+      clearTimeout(resumeTimer);
+      resumeTimer = null;
+    }
+    paused = false;
+    INTERACTION_EVENTS.forEach((ev) => list.removeEventListener(ev, pauseInteract));
+    clones.forEach((c) => c.remove());
+    clones = [];
+    list.scrollLeft = 0;
+  }
+
+  function apply() {
+    if (mql.matches) enable();
+    else disable();
+  }
+
+  mql.addEventListener("change", apply);
+  apply();
 })();
 
 /* ============ Footer year ============ */

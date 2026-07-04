@@ -96,6 +96,12 @@ a:hover { text-decoration: underline; }
 }
 .nav-logo:hover { text-decoration: none; color: var(--accent); }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -110,14 +116,15 @@ a:hover { text-decoration: underline; }
 }
 .nav-links a:hover, .nav-links a.active { color: var(--accent); text-decoration: none; }
 
-.nav-links .nav-cta {
+.nav-cta {
   color: var(--accent);
   border: 1px solid var(--accent);
   padding: 0.4rem 1rem;
   border-radius: 8px;
   transition: background 0.2s ease;
+  white-space: nowrap;
 }
-.nav-links .nav-cta:hover { background: var(--accent-soft); }
+.nav-cta:hover { background: var(--accent-soft); text-decoration: none; }
 
 /* ============ Hero ============ */
 .hero {
@@ -814,9 +821,38 @@ a:hover { text-decoration: underline; }
   .scroll-hint { display: none; }
   #skydiver { display: none; }
 
-  .nav-links { gap: 1rem; }
-  .nav-links a { font-size: 0.85rem; }
-  .nav-links .nav-cta { padding: 0.3rem 0.7rem; }
+  /* Mobile nav: pin logo (left) + Contact (right); middle links scroll/loop */
+  .nav-inner { gap: 0.6rem; padding: 0 1rem; }
+  .nav-logo { flex-shrink: 0; }
+  .nav-right { flex: 1; min-width: 0; gap: 0.6rem; }
+  .nav-links {
+    flex: 1;
+    min-width: 0;
+    gap: 1.4rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links li { flex-shrink: 0; }
+  .nav-links a { font-size: 0.9rem; white-space: nowrap; }
+  .nav-cta { flex-shrink: 0; padding: 0.3rem 0.8rem; font-size: 0.9rem; }
+
+  /* Mobile filter tabs: single clean scrollable row */
+  .project-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: 100%;
+    justify-content: flex-start;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .project-tabs::-webkit-scrollbar { display: none; }
+  .tab { flex-shrink: 0; }
+  .tab-divider { flex-shrink: 0; }
 
   .timeline::before { left: 8px; }
   .timeline-item,
