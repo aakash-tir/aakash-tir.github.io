@@ -527,18 +527,19 @@ if (!prefersReducedMotion) {
   if (!list) return;
   const mql = window.matchMedia("(max-width: 500px)");
 
-  const SPEED = 0.4; // px per frame
+  const SPEED = 0.2; // px per frame
   let rafId = null;
   let paused = false;
   let resumeTimer = null;
   let clones = [];
   let loopWidth = 0;
+  let pos = 0; // our own float position (scrollLeft rounds to whole px on read)
 
   function step() {
     if (!paused && loopWidth > 0) {
-      let x = list.scrollLeft + SPEED;
-      if (x >= loopWidth) x -= loopWidth;
-      list.scrollLeft = x;
+      pos += SPEED;
+      if (pos >= loopWidth) pos -= loopWidth;
+      list.scrollLeft = pos;
     }
     rafId = requestAnimationFrame(step);
   }
@@ -548,6 +549,7 @@ if (!prefersReducedMotion) {
     if (resumeTimer) clearTimeout(resumeTimer);
     resumeTimer = setTimeout(() => {
       paused = false;
+      pos = list.scrollLeft; // resume from wherever the user left it
     }, 5000); // hold on the scrolled-to spot for 5s, then resume
   }
 
@@ -572,6 +574,7 @@ if (!prefersReducedMotion) {
     INTERACTION_EVENTS.forEach((ev) =>
       list.addEventListener(ev, pauseInteract, { passive: true })
     );
+    pos = list.scrollLeft;
     if (!prefersReducedMotion) rafId = requestAnimationFrame(step);
   }
 
