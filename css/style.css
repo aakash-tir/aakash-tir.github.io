@@ -813,6 +813,13 @@ a:hover { text-decoration: underline; }
   .hero-actions { justify-content: center; }
   .portrait-frame { width: min(260px, 62vw); }
   .portrait-frame::before { transform: translate(12px, 12px); }
+
+  /* Nav stays right-aligned (links next to Contact), just more compact */
+  .nav-inner { padding: 0 1rem; }
+  .nav-right { gap: 1rem; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.85rem; }
+  .nav-cta { padding: 0.3rem 0.75rem; font-size: 0.85rem; }
 }
 
 @media (max-width: 720px) {
@@ -820,26 +827,6 @@ a:hover { text-decoration: underline; }
 
   .scroll-hint { display: none; }
   #skydiver { display: none; }
-
-  /* Mobile nav: pin logo (left) + Contact (right); middle links scroll/loop */
-  .nav-inner { gap: 0.6rem; padding: 0 1rem; }
-  .nav-logo { flex-shrink: 0; }
-  .nav-right { flex: 1; min-width: 0; gap: 0.6rem; }
-  .nav-links {
-    flex: 1;
-    min-width: 0;
-    gap: 1.4rem;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
-    mask-image: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
-  }
-  .nav-links::-webkit-scrollbar { display: none; }
-  .nav-links li { flex-shrink: 0; }
-  .nav-links a { font-size: 0.9rem; white-space: nowrap; }
-  .nav-cta { flex-shrink: 0; padding: 0.3rem 0.8rem; font-size: 0.9rem; }
 
   /* Mobile filter tabs: single clean scrollable row */
   .project-tabs {
@@ -868,6 +855,28 @@ a:hover { text-decoration: underline; }
   .timeline-item:nth-child(even).reveal { transform: translateY(28px); }
   .timeline-item.reveal.visible,
   .timeline-item:nth-child(even).reveal.visible { transform: translateY(0); }
+}
+
+/* Phone-only nav: pin logo (left) + Contact (right); middle links scroll/loop */
+@media (max-width: 500px) {
+  .nav-inner { gap: 0.6rem; padding: 0 1rem; }
+  .nav-logo { flex-shrink: 0; }
+  .nav-right { flex: 1; min-width: 0; gap: 0.6rem; }
+  .nav-links {
+    flex: 1;
+    min-width: 0;
+    gap: 1.4rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links li { flex-shrink: 0; }
+  .nav-links a { font-size: 0.9rem; white-space: nowrap; }
+  .nav-cta { flex-shrink: 0; padding: 0.3rem 0.8rem; font-size: 0.9rem; }
 }
 
 /* ============ Reduced motion ============ */

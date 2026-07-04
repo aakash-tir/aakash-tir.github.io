@@ -525,7 +525,7 @@ if (!prefersReducedMotion) {
 (function () {
   const list = document.querySelector(".nav-links");
   if (!list) return;
-  const mql = window.matchMedia("(max-width: 720px)");
+  const mql = window.matchMedia("(max-width: 500px)");
 
   const SPEED = 0.4; // px per frame
   let rafId = null;
