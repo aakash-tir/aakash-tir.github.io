@@ -11,7 +11,18 @@
   <meta property="og:description" content="2026 CS grad (Data Science minor). Research in multi-agent LLM systems, applied ML, and computer vision. Seeking new-grad SWE / ML roles." />
   <meta property="og:type" content="website" />
 
-  <link rel="stylesheet" href="css/style.css" />
+  <!-- Styles are split by concern; load order is the cascade order.
+       tokens → base → components → animations → responsive (+ reduced-motion). -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/timeline.css" />
+  <link rel="stylesheet" href="css/projects.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
   <a class="skip-link" href="#about">Skip to content</a>
@@ -402,6 +413,6 @@
     <p>Built by Aakash Tirathdas · <span id="year"></span></p>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

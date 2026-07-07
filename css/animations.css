@@ -1,0 +1,73 @@
+/* ============ Scroll skydiver ============ */
+#skydiver {
+  position: fixed;
+  top: 0;
+  right: 2px;
+  width: 8vh;
+  height: 10vh;
+  z-index: 40;
+  pointer-events: none;
+  color: var(--text);
+  transform: translateY(10vh);
+  will-change: transform;
+}
+#skydiver svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Only the active phase's pose is shown */
+#skydiver .pose { display: none; }
+#skydiver[data-phase="plane"] .pose-plane,
+#skydiver[data-phase="freefall"] .pose-freefall,
+#skydiver[data-phase="parachute"] .pose-parachute,
+#skydiver[data-phase="superman"] .pose-superman,
+#skydiver[data-phase="land"] .pose-land { display: block; }
+
+/* Idle motion within a pose */
+#skydiver[data-phase="parachute"] .canopy {
+  transform-origin: 50px 20px;
+  animation: chuteSway 3.2s ease-in-out infinite;
+}
+@keyframes chuteSway {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+
+#skydiver[data-phase="freefall"] .pose-freefall {
+  animation: fallFlutter 0.5s ease-in-out infinite alternate;
+}
+@keyframes fallFlutter {
+  from { transform: translateX(-1.5px); }
+  to { transform: translateX(1.5px); }
+}
+
+#skydiver[data-phase="land"] .wave-arm {
+  transform-origin: 50px 50px;
+  animation: handWave 0.55s ease-in-out infinite alternate;
+}
+@keyframes handWave {
+  from { transform: rotate(-10deg); }
+  to { transform: rotate(14deg); }
+}
+
+#skydiver[data-phase="superman"] .pose-superman {
+  animation: superBob 1.6s ease-in-out infinite alternate;
+}
+@keyframes superBob {
+  from { transform: translateY(-2px); }
+  to { transform: translateY(2px); }
+}
+
+/* ============ Reveal animations ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease var(--delay, 0s), transform 0.6s ease var(--delay, 0s);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.timeline-item.reveal { transform: translateX(-32px); }
+.timeline-item:nth-child(even).reveal { transform: translateX(32px); }
+.timeline-item.reveal.visible { transform: translateX(0); }
