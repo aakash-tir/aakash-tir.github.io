@@ -14,28 +14,27 @@ Vanilla HTML/CSS/JS static site.
 ## Content inventory
 
 ### Owner
-- Aakash Tirathdas — CS student, UBC Okanagan
+- Aakash Tirathdas — CS graduate (Class of 2026), UBC Okanagan; Data Science minor, First Class Standing
 - GitHub: [aakash-tir](https://github.com/aakash-tir) · Email: aakashtirathdas@gmail.com
 - GitHub bio: "Just a chill guy trying to code his way through life."
 
-### Projects (from GitHub pinned repos, fetched 2026-07-02)
+### Projects
+Source of truth is `js/data/projects.js` (`PROJECTS`); this table mirrors it. Each project has an area (`ai-ml` / `data` / `software`), a status, and an `added` date (newest shown first).
 
 **In progress**
 | Project | Language | Notes |
 |---|---|---|
-| [COSC 499 Capstone (Team 6)](https://github.com/COSC-499-W2025/capstone-project-team-6) | Python | W2025 capstone project |
-| This portfolio page | HTML/CSS/JS | The site itself |
+| Sinhala Learning App | React · Capacitor | Offline Sinhala-learning app; Android APK + iOS/web PWA. Private repo. |
+| Sign App — Learn ASL by Camera | React · TensorFlow.js | On-device ASL recognition (MediaPipe + TF.js), cross-platform PWA. Private repo. |
+| Glimpse — Desktop Weather App | TypeScript · Electron | Always-on Windows 11 weather app; Open-Meteo + NOAA space-weather. Private repo. |
 
 **Completed**
 | Project | Language | Notes |
 |---|---|---|
-| [Jersey Number Recognition](https://github.com/carsonbennett1/Jersey-Number-Recognition-Project) | Python | Computer vision — recognizing jersey numbers |
-| [Game of the Amazons (COSC 322)](https://github.com/maddysam356/COSC-322-Project) | Java | AI game-playing agent |
-| [Final Project Group 6](https://github.com/sjanr/final_project_group6) | C# | Course final project — needs real description from owner |
-| [DATA 301 Group Project](https://github.com/ubco-W2022T2-data301/project-group-group05) | Jupyter/Python | Data analytics project |
+| [Blume — Resume & Portfolio Generator](https://github.com/COSC-499-W2025/capstone-project-team-6) | Python · React | COSC 499 capstone (team of 6); folder-traversal / project-identification module. |
+| [Jersey Number Recognition](https://github.com/carsonbennett1/Jersey-Number-Recognition-Project) | Python · PyTorch | COSC 419B computer-vision pipeline; 86.71% → 88.52% accuracy. |
+| [US Flight Delay Analysis](https://github.com/ubco-W2022T2-data301/project-group-group05) | pandas · Tableau | DATA 301 analysis of US flight delays (2019–2021). |
+| [Game of the Amazons AI Bot](https://github.com/maddysam356/COSC-322-Project) | Java | COSC 322 Minimax + alpha-beta game agent. |
 
-### Known placeholder content (owner must supply real text)
-- About-me paragraph details (currently written from bio + inferred facts)
-- Timeline: exact education years, any jobs/internships (currently TEMP entries)
-- Real descriptions for `final_project_group6` and the capstone
-- Contact: whether to add LinkedIn, phone, resume PDF
+### Content status
+All sections now hold real, owner-approved content — no `<!-- TEMP -->` placeholders remain (enforced by the publish-readiness check). About-me, timeline (3 roles + BSc + A-Levels), project descriptions, and contact (email, phone, LinkedIn, résumé PDF) are all final.
