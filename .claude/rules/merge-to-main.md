@@ -12,7 +12,7 @@ job **`checks`**). They also run locally — run them before opening a PR:
 
 | Check | Command | What it guards |
 |---|---|---|
-| JS syntax | `for f in js/*.js; do node --check "$f"; done` | No broken/unparseable JavaScript |
+| JS syntax | `for f in $(find js -name '*.js'); do node --check "$f"; done` | No broken/unparseable JavaScript (all modules, incl. `js/data/`) |
 | Publish readiness | `node scripts/checks/verify.mjs` | Every local `src`/`href` asset exists (no 404s live); no leftover `<!-- TEMP -->` placeholders |
 | HTML validation | `npx --yes html-validate@8 index.html` | Well-formed markup, valid attributes, required attrs (alt, lang, …) |
 | CSS lint | `npx --yes stylelint@16 "css/**/*.css"` | No invalid hex/units/properties, duplicate selectors, unspaced calc, etc. |

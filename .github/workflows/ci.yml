@@ -25,7 +25,7 @@ jobs:
 
       - name: JS syntax check
         run: |
-          for f in js/*.js; do
+          for f in $(find js -name '*.js'); do
             echo "node --check $f"
             node --check "$f"
           done
