@@ -1,0 +1,141 @@
+/* ============ Responsive ============ */
+@media (max-width: 860px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+
+  /* Hero: stack portrait above text, re-center */
+  .hero-inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 2.25rem;
+    padding-top: 5.5rem;
+  }
+  .hero-content { max-width: 620px; order: 2; }
+  .hero-portrait { order: 1; }
+  .hero-actions { justify-content: center; }
+  .portrait-frame { width: min(260px, 62vw); }
+  .portrait-frame::before { transform: translate(12px, 12px); }
+
+  /* Nav stays right-aligned (links next to Contact), just more compact */
+  .nav-inner { padding: 0 1rem; }
+  .nav-right { gap: 1rem; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.85rem; }
+  .nav-cta { padding: 0.3rem 0.75rem; font-size: 0.85rem; }
+}
+
+@media (max-width: 720px) {
+  .section { padding: 4rem 0; }
+
+  .scroll-hint { display: none; }
+  #skydiver { display: none; }
+
+  /* Mobile: two stacked groups, each a single scrollable line.
+     The block shrinks to the wider group's width (not the whole screen). */
+  .filters-desktop { display: none; }
+  .filters-mobile {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+    max-width: 100%;
+    margin: 1.5rem 0 2.5rem;
+  }
+  .filters-mobile .project-tabs {
+    margin: 0;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filters-mobile .project-tabs::-webkit-scrollbar { display: none; }
+  .filters-mobile .tab { flex-shrink: 0; }
+
+  .timeline::before { left: 8px; }
+  .timeline-item,
+  .timeline-item:nth-child(even) {
+    width: 100%;
+    margin-left: 0;
+    padding: 0 0 2rem 2.2rem;
+  }
+  .timeline-item::before,
+  .timeline-item:nth-child(even)::before { left: 1px; right: auto; }
+
+  .timeline-item.reveal,
+  .timeline-item:nth-child(even).reveal { transform: translateY(28px); }
+  .timeline-item.reveal.visible,
+  .timeline-item:nth-child(even).reveal.visible { transform: translateY(0); }
+
+  /* Collapse cards on mobile: show date/title/org, hide description behind an arrow */
+  .timeline-desc {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease;
+  }
+  .timeline-card.expanded .timeline-desc {
+    max-height: 40rem;
+    opacity: 1;
+    margin-top: 0.6rem;
+  }
+  .timeline-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.4rem auto 0;
+    padding: 0.2rem 0.4rem;
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .timeline-toggle:hover { color: var(--accent); }
+  .timeline-toggle svg { transition: transform 0.3s ease; }
+  .timeline-card.expanded .timeline-toggle svg { transform: rotate(180deg); }
+}
+
+/* Phone-only nav: pin logo (left) + Contact (right); middle links scroll/loop */
+@media (max-width: 500px) {
+  .nav-inner { gap: 0.6rem; padding: 0 1rem; }
+  .nav-logo { flex-shrink: 0; }
+  .nav-right { flex: 1; min-width: 0; gap: 0.6rem; }
+  .nav-links {
+    flex: 1;
+    min-width: 0;
+    gap: 1.4rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links li { flex-shrink: 0; }
+  .nav-links a { font-size: 0.9rem; white-space: nowrap; }
+  .nav-cta { flex-shrink: 0; padding: 0.3rem 0.8rem; font-size: 0.9rem; }
+}
+
+/* ============ Reduced motion ============ */
+/* Kept last so it overrides the transition rules the responsive blocks above
+   set on .timeline-desc / .timeline-toggle svg. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .timeline-item.reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .project-card { animation: none; }
+  .scroll-hint-wheel, .cursor { animation: none; }
+  .btn:hover, .project-card:hover, .timeline-card:hover { transform: none; }
+  .portrait-frame::before, .portrait-frame:hover::before { transition: none; }
+  .stat:hover { transform: none; }
+  .status-in-progress .status-dot { animation: none; }
+  .page-arrow:hover:not(:disabled) { transform: none; }
+  #skydiver { display: none; }
+  .timeline-desc, .timeline-toggle svg { transition: none; }
+}

@@ -1,0 +1,188 @@
+/* ============ Projects ============ */
+.project-tabs {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px;
+  margin: 1.5rem 0 2.5rem;
+  gap: 4px;
+}
+
+/* Mobile two-group filters are hidden on desktop */
+.filters-mobile { display: none; }
+.tab-divider {
+  width: 1px;
+  align-self: stretch;
+  margin: 4px 4px;
+  background: var(--border);
+}
+.tab {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.55rem 1.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.tab:hover { color: var(--text); }
+.tab.active { background: var(--accent); color: #04222b; }
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  animation: cardIn 0.45s ease both;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.project-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-lang {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+}
+
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+}
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.status-completed {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.status-completed .status-dot { background: var(--accent); }
+.status-in-progress {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.13);
+}
+.status-in-progress .status-dot {
+  background: #fbbf24;
+  box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.6);
+  animation: pulseDot 2s ease-out infinite;
+}
+@keyframes pulseDot {
+  0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.5); }
+  70% { box-shadow: 0 0 0 6px rgba(251, 191, 36, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+}
+
+.project-link { color: var(--muted); display: inline-flex; transition: color 0.2s ease; }
+.project-link:hover { color: var(--accent); }
+
+.project-private {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.project-card h3 { font-size: 1.2rem; }
+.project-card .desc { color: var(--muted); font-size: 0.95rem; flex: 1; }
+
+.project-tech {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.project-tech li { color: var(--muted); font-size: 0.8rem; font-family: ui-monospace, monospace; }
+
+.project-empty { color: var(--muted); font-style: italic; }
+
+/* ----- Pagination ----- */
+.project-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+.project-pagination[hidden] { display: none; }
+
+.page-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease,
+    background 0.2s ease, transform 0.2s ease;
+}
+.page-arrow:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+.page-arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.page-indicator {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  min-width: 3.5rem;
+  text-align: center;
+}

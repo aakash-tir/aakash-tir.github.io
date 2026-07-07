@@ -1,0 +1,60 @@
+/* ============ Nav ============ */
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: var(--nav-h);
+  z-index: 50;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.nav.scrolled {
+  background: rgba(10, 15, 28, 0.85);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.nav-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.nav-logo:hover { text-decoration: none; color: var(--accent); }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--accent); text-decoration: none; }
+
+.nav-cta {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+.nav-cta:hover { background: var(--accent-soft); text-decoration: none; }
