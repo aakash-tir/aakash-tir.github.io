@@ -6,6 +6,17 @@
 //         later date than the others (e.g. today) and it jumps to the top.
 export const PROJECTS = [
   {
+    title: "Newsletter Capture — AI Audio Briefing",
+    cats: ["ai-ml", "software"],
+    status: "in-progress",
+    added: "2026-07-30",
+    lang: "Python · Google Cloud",
+    desc:
+      "An automated daily pipeline that turns a Gmail inbox full of newsletters into a single narrated audio briefing. Claude (via the Anthropic SDK) detects, deduplicates, categorizes, and summarizes newsletters into a conversational script, then a three-engine text-to-speech chain (OpenAI → Google Cloud TTS → gTTS) renders an MP3 delivered to Google Drive. Runs serverless on Google Cloud Functions with Firestore and powers a public subscriber service with topic-personalized audio and per-subscriber send times — backed by a 346-test suite.",
+    tech: ["Python", "Anthropic API", "Google Cloud", "Firestore"],
+    // Private repository — no public link.
+  },
+  {
     title: "Sinhala Learning App",
     cats: ["software"],
     status: "in-progress",
