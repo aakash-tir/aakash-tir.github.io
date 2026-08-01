@@ -1,0 +1,132 @@
+/* ============ Certifications ============ */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.cert-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  animation: cardIn 0.45s ease both; /* keyframes defined in projects.css */
+}
+.cert-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.cert-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cert-issuer {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+}
+
+.cert-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.cert-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cert-status.earned {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.cert-status.earned .cert-dot { background: var(--accent); }
+.cert-status.in-progress {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.13);
+}
+.cert-status.in-progress .cert-dot {
+  background: #fbbf24;
+  animation: pulseDot 2s ease-out infinite; /* keyframes defined in projects.css */
+}
+
+.cert-card h3 { font-size: 1.1rem; }
+.cert-card h3 a { color: inherit; }
+.cert-card h3 a:hover { color: var(--accent); }
+
+.cert-note { color: var(--muted); font-size: 0.9rem; flex: 1; }
+
+.cert-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.3rem;
+}
+
+.cert-topics {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.cert-topics li { color: var(--muted); font-size: 0.8rem; font-family: ui-monospace, monospace; }
+
+.cert-date {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ----- "Show all" expansion, grouped by topic ----- */
+.cert-more { margin-top: 2rem; display: grid; gap: 2rem; }
+.cert-more[hidden] { display: none; }
+
+.cert-group-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.cert-toggle {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 2rem;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.55rem 1.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.cert-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.cert-toggle[hidden] { display: none; }

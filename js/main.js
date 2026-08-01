@@ -9,7 +9,9 @@
    Modules:
      config.js        shared reduced-motion flag
      data/projects.js the PROJECTS content list
+     data/certifications.js the CERTIFICATIONS content list + topics
      projects.js      project grid: rendering, filter tabs, pagination
+     certifications.js certification cards: pinned grid + grouped "Show all"
      typing.js        hero typing/erasing headline
      reveal.js        scroll-reveal IntersectionObserver
      nav.js           nav scrolled state + active-link highlighting
@@ -21,6 +23,7 @@
    ============================================================ */
 
 import "./projects.js";
+import "./certifications.js";
 import "./typing.js";
 import "./reveal.js";
 import "./nav.js";

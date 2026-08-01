@@ -42,3 +42,5 @@
 - 2026-07-02: Phase 2 content pass — filled all sections from resume, new-grad SWE/ML positioning, added stats/résumé/LinkedIn/phone, project category filter. All TEMP markers removed.
 - 2026-07-06: Mobile fixes — nav marquee, collapsible experience/education cards, project filter + pagination fixes across desktop/half-screen/mobile. Reworded About intro.
 - 2026-07-07: Restructured CSS (1 file → 10) and JS (1 file → ES modules) with no build step. Verified live. Removed stale `plan.md`; refreshed all `.claude/` docs + README to match.
+- 2026-07-31: Added Newsletter Capture project card + Google Cloud / REST APIs skill chips (PR #6, live).
+- 2026-07-31: Built Certifications section (04, between Projects and Contact): data-driven cards from `js/data/certifications.js`, pinned vs "Show all" grouped by topic, PL-300 shown as in-progress. Contact renumbered to 05. Owner to supply completed DataCamp certs.
