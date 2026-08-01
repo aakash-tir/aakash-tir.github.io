@@ -43,8 +43,14 @@ Source of truth is `js/data/certifications.js` (`CERTIFICATIONS`); this list mir
 | Certification | Issuer | Status | Pinned |
 |---|---|---|---|
 | PL-300: Microsoft Power BI Data Analyst | Microsoft | In progress (expected 2026) — preparing via DataCamp's Data Analyst in Power BI track | Yes |
+| Introduction to Power BI | DataCamp | Earned Jul 2026 | No |
+| Data Preparation in Power BI | DataCamp | Earned Jul 2026 | No |
+| Data Visualization in Power BI | DataCamp | Earned Jul 2026 | No |
+| Introduction to DAX in Power BI | DataCamp | Earned Jul 2026 | No |
+| Case Study: Analyzing Customer Churn in Power BI | DataCamp | Earned Jul 2026 | No |
+| Introduction to Apache Airflow in Python | DataCamp | Earned Jul 2026 | No |
 
-Owner still to supply: completed DataCamp course certificates (will be added unpinned, grouped by topic).
+All DataCamp entries link to their statement-of-accomplishment verify pages.
 
 ### Content status
 All sections now hold real, owner-approved content — no `<!-- TEMP -->` placeholders remain (enforced by the publish-readiness check). About-me, timeline (3 roles + BSc + A-Levels), project descriptions, and contact (email, phone, LinkedIn, résumé PDF) are all final.
