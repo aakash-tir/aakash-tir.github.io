@@ -24,6 +24,7 @@ Source of truth is `js/data/projects.js` (`PROJECTS`); this table mirrors it. Ea
 **In progress**
 | Project | Language | Notes |
 |---|---|---|
+| Newsletter Capture — AI Audio Briefing | Python · Google Cloud | Gmail newsletters → Claude-summarized script → TTS audio briefing on Google Drive; serverless (Cloud Functions + Firestore), 346-test suite. Private repo. |
 | Sinhala Learning App | React · Capacitor | Offline Sinhala-learning app; Android APK + iOS/web PWA. Private repo. |
 | Sign App — Learn ASL by Camera | React · TensorFlow.js | On-device ASL recognition (MediaPipe + TF.js), cross-platform PWA. Private repo. |
 | Glimpse — Desktop Weather App | TypeScript · Electron | Always-on Windows 11 weather app; Open-Meteo + NOAA space-weather. Private repo. |
