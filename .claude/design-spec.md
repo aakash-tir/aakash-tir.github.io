@@ -31,7 +31,13 @@ Logo/name left, section links right. Gains a background + shadow after scrolling
 - Paginated (3/4/6 cards per page depending on column count), newest-first by `added` date.
 - Data lives in `js/data/projects.js` (`PROJECTS`) so adding a project = adding one object; rendering/filtering/pagination is in `js/projects.js`.
 
-### 5. Contact (`#contact`)
+### 5. Certifications (`#certifications`)
+- Pinned certs render in a card grid (same auto-fill layout as projects). Each card: issuer pill, status badge (Earned = accent / In Progress = amber pulse), name (linked when a verify `url` exists), optional note, topic chips, date label.
+- Unpinned certs sit behind a "Show all (N)" toggle, grouped under uppercase topic headings; the toggle is hidden while there are no unpinned certs. No filter UI — grouping does the topical organization.
+- Data lives in `js/data/certifications.js` (`CERTIFICATIONS` + `TOPICS`) so adding a cert = adding one object; rendering/toggle is in `js/certifications.js`.
+- In-progress credentials are shown honestly (e.g. "PL-300 — Expected 2026" with a prep note), never as earned.
+
+### 6. Contact (`#contact`)
 - Short pitch line + big email CTA button, icon links (GitHub, LinkedIn placeholder).
 - No form/backend in v1 — `mailto:` only. Footer with © year (auto).
 

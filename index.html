@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="css/about.css" />
   <link rel="stylesheet" href="css/timeline.css" />
   <link rel="stylesheet" href="css/projects.css" />
+  <link rel="stylesheet" href="css/certifications.css" />
   <link rel="stylesheet" href="css/contact.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/responsive.css" />
@@ -35,6 +36,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#timeline">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#certifications">Certifications</a></li>
           <li><a href="Aakash_Tirathdas_Resume.pdf" target="_blank" rel="noopener">Résumé</a></li>
         </ul>
         <a href="#contact" class="nav-cta">Contact</a>
@@ -296,10 +298,25 @@
       </div>
     </section>
 
+    <!-- ============ CERTIFICATIONS ============ -->
+    <section class="section section-alt" id="certifications">
+      <div class="container">
+        <h2 class="section-title reveal"><span class="section-num">04.</span> Certifications</h2>
+        <p class="section-sub reveal">Credentials I've earned and what I'm working toward now.</p>
+        <div class="cert-grid reveal" id="cert-grid">
+          <!-- Pinned certifications rendered by js/certifications.js -->
+        </div>
+        <div class="cert-more" id="cert-more" hidden>
+          <!-- Remaining certifications, grouped by topic, rendered by js/certifications.js -->
+        </div>
+        <button class="cert-toggle reveal" id="cert-toggle" type="button" aria-expanded="false" aria-controls="cert-more" hidden>Show all</button>
+      </div>
+    </section>
+
     <!-- ============ CONTACT ============ -->
-    <section class="section section-alt" id="contact">
+    <section class="section" id="contact">
       <div class="container contact-container">
-        <h2 class="section-title reveal"><span class="section-num">04.</span> Get In Touch</h2>
+        <h2 class="section-title reveal"><span class="section-num">05.</span> Get In Touch</h2>
         <p class="contact-pitch reveal">
           I'm looking for new-grad software engineering and ML roles, and I'm always up for an
           interesting conversation or collaboration. The fastest way to reach me is email.

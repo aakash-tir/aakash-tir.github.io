@@ -129,12 +129,12 @@
     transform: none;
     transition: none;
   }
-  .project-card { animation: none; }
+  .project-card, .cert-card { animation: none; }
   .scroll-hint-wheel, .cursor { animation: none; }
-  .btn:hover, .project-card:hover, .timeline-card:hover { transform: none; }
+  .btn:hover, .project-card:hover, .cert-card:hover, .timeline-card:hover { transform: none; }
   .portrait-frame::before, .portrait-frame:hover::before { transition: none; }
   .stat:hover { transform: none; }
-  .status-in-progress .status-dot { animation: none; }
+  .status-in-progress .status-dot, .cert-status.in-progress .cert-dot { animation: none; }
   .page-arrow:hover:not(:disabled) { transform: none; }
   #skydiver { display: none; }
   .timeline-desc, .timeline-toggle svg { transition: none; }
