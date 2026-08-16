@@ -44,3 +44,4 @@
 - 2026-07-07: Restructured CSS (1 file → 10) and JS (1 file → ES modules) with no build step. Verified live. Removed stale `plan.md`; refreshed all `.claude/` docs + README to match.
 - 2026-07-31: Added Newsletter Capture project card + Google Cloud / REST APIs skill chips (PR #6, live).
 - 2026-07-31: Built Certifications section (04, between Projects and Contact): data-driven cards from `js/data/certifications.js`, pinned vs "Show all" grouped by topic, PL-300 shown as in-progress. Contact renumbered to 05. Owner to supply completed DataCamp certs.
+- 2026-08-16: Glimpse weather app card refreshed — public repo link (https://github.com/aakash-tir/glimpse, MIT) replaces the "Private" badge; description updated to M0–M11 shipped as an NSIS installer, severe-weather alerts (Environment Canada), onboarding tutorial, and 1,031 automated tests. Status flipped in-progress → completed (all milestones closed, installer shipping, source public).

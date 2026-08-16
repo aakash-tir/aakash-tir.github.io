@@ -41,13 +41,13 @@ export const PROJECTS = [
   {
     title: "Glimpse — Desktop Weather App",
     cats: ["software"],
-    status: "in-progress",
+    status: "completed",
     added: "2026-06-30",
     lang: "TypeScript · Electron",
     desc:
-      "A lightweight always-on-desktop weather app for Windows 11: a small floating icon shows the current condition and expands into a card of cube-flipping slides — hourly, 7-day, current conditions, moon phase, and rare celestial events like auroras and meteor showers. Built with Electron, React, and TypeScript, pulling live data from Open-Meteo, NOAA space-weather (Kp/aurora), and SunCalc, with graceful offline handling. Structured across 11 milestones (M0–M10) with a Vitest + Playwright test suite.",
+      "A tiny always-visible desktop weather app for Windows 11: a 64×64 floating icon shows the current condition and expands into a small square window of cube-flipping slides — hourly, 7-day, current conditions, moon phase, severe weather alerts, and celestial events like auroras, meteor showers, and eclipses. No taskbar entry, no tray, no browser tab — the icon is the app. Built with Electron, React, and TypeScript on free keyless APIs (Open-Meteo, NOAA space-weather Kp, Environment Canada alerts, SunCalc), with an 8-step onboarding tutorial, cached-location fallback, and graceful offline handling. Shipped across 12 milestones (M0–M11) as an NSIS installer, with 1,031 automated tests (1,002 Vitest + 29 Playwright) gated by CI on every push. Source is public under MIT.",
     tech: ["Electron", "React", "TypeScript", "Open-Meteo API"],
-    // Private repository — no public link.
+    url: "https://github.com/aakash-tir/glimpse",
   },
   {
     title: "Blume — Resume & Portfolio Generator",
