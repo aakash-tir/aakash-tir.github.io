@@ -13,10 +13,10 @@ Interactive single-page portfolio for Aakash Tirathdas. Static site: vanilla HTM
 - Vanilla HTML/CSS/JS, no build step; no frameworks or npm unless the owner asks. Source is split by concern:
   - `index.html` — all sections (hero, about, timeline, projects, certifications, contact).
   - `css/` — one file per concern, linked from `<head>` in cascade order: `tokens · base · nav · hero · about · timeline · projects · certifications · contact · animations · responsive`. Load order **is** the cascade; keep `responsive.css` (which ends with the `prefers-reduced-motion` block) last.
-  - `js/` — native ES modules. `main.js` is a thin entry point that imports one module per feature (`projects`, `certifications`, `typing`, `reveal`, `nav`, `particles`, `skydiver`, `clock`, `mobile-nav`, `timeline`); `config.js` holds the shared reduced-motion flag; `data/projects.js` and `data/certifications.js` hold the content lists. Loaded via `<script type="module">`.
+  - `js/` — native ES modules. `main.js` is a thin entry point that imports one module per feature (`projects`, `certifications`, `typing`, `reveal`, `nav`, `particles`, `skydiver`, `clock`, `mobile-nav`, `timeline`); `project-expand.js` is pulled in by `projects.js` rather than by `main.js`, since it is part of the projects feature. `config.js` holds the shared reduced-motion flag; `data/projects.js` and `data/certifications.js` hold the content lists. Loaded via `<script type="module">`.
 - Theme tokens live as CSS custom properties in `:root` in `css/tokens.css` — change colors there, not inline.
 - All scroll animations go through the `.reveal` + IntersectionObserver pattern in `js/reveal.js`.
-- Project cards are data-driven: add a project = add one object to `PROJECTS` in `js/data/projects.js`.
+- Project cards are data-driven: add a project = add one object to `PROJECTS` in `js/data/projects.js`. Every project needs **both** a `short` one-line hook (all a collapsed card shows — clamped to two lines) and the full `desc` (revealed when the card expands to the centre of the screen). Write the hook first; it is the only copy most visitors read.
 - Certification cards are data-driven too: add a cert = add one object to `CERTIFICATIONS` in `js/data/certifications.js` (`pinned: true` = always visible; unpinned certs sit behind "Show all", grouped by topic).
 - Placeholder content is marked with `<!-- TEMP -->` comments in HTML — replace with real content when the owner provides it, and remove the marker.
 - Respect `prefers-reduced-motion` for any new animation.

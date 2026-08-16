@@ -48,6 +48,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  cursor: pointer;
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   animation: cardIn 0.45s ease both;
 }
@@ -60,6 +61,50 @@
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
+/* Set once a card has been expanded: re-parenting the node would otherwise
+   replay `cardIn` and drag its transform into the middle of the morph. */
+.project-card.is-static { animation: none; }
+
+/* ----- Expanded card: lifted out of the grid, centred over a backdrop -----
+   js/project-expand.js drives top/left/width/height inline; these rules only
+   describe how it looks and what animates. */
+.project-card.is-expanded {
+  position: fixed;
+  /* Above the nav (50); below the skip link (100). */
+  z-index: 80;
+  overflow: hidden;
+  padding: 2rem;
+  cursor: default;
+  border-color: var(--accent);
+  box-shadow: 0 30px 70px rgb(0 0 0 / 55%);
+}
+.project-card.is-expanded:hover { transform: none; }
+.project-card.is-morphing {
+  transition: top 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    left 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* Once it has finished growing, let the card follow its own content and give
+   an over-long write-up somewhere to scroll. */
+.project-card.is-open {
+  height: auto;
+  max-height: 86vh;
+  overflow-y: auto;
+}
+
+.project-placeholder { visibility: hidden; }
+
+.project-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: rgb(2 6 14 / 62%);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 0.42s ease;
+}
+.project-backdrop.is-visible { opacity: 1; }
 
 .project-card-top {
   display: flex;
@@ -132,13 +177,55 @@
 }
 
 .project-card h3 { font-size: 1.2rem; }
-.project-card .desc { color: var(--muted); font-size: 0.95rem; flex: 1; }
+.project-card .desc { color: var(--muted); font-size: 0.95rem; }
+
+/* ----- Collapsed vs expanded copy -----
+   Collapsed cards show only the one-line hook, clamped to two lines so a card
+   can never grow tall enough to stretch its whole grid row. The full write-up
+   is in the DOM the whole time (so it is searchable and measurable) but only
+   laid out once the card expands. */
+.desc-brief {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  /* No `flex: 1` here: stretching a clamped box reveals the line it is
+     supposed to be hiding. `.project-tech` takes up the slack instead. */
+}
+.desc-full { display: none; }
+.project-card.is-expanded .desc-brief { display: none; }
+.project-card.is-expanded .desc-full { display: block; }
+
+/* ----- Expand affordance ----- */
+.project-expand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  align-self: flex-start;
+  margin-top: 0.2rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: gap 0.2s ease;
+}
+.project-card:hover .project-expand { gap: 0.5rem; }
+.project-expand svg { transition: transform 0.25s ease; }
+.project-card.is-expanded .project-expand svg { transform: rotate(180deg); }
 
 .project-tech {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  /* Absorbs the leftover height so the chips and the Details toggle line up
+     along the bottom of every card in a row, whatever the hook's length. */
+  margin-top: auto;
 }
 .project-tech li { color: var(--muted); font-size: 0.8rem; font-family: ui-monospace, monospace; }
 

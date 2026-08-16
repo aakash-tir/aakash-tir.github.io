@@ -136,6 +136,10 @@
   .stat:hover { transform: none; }
   .status-in-progress .status-dot, .cert-status.in-progress .cert-dot { animation: none; }
   .page-arrow:hover:not(:disabled) { transform: none; }
+  /* Cards still expand to the centre — they just get there instantly. */
+  .project-card.is-morphing, .project-backdrop { transition: none; }
+  .project-expand, .project-expand svg { transition: none; }
+  .project-card.is-expanded .project-expand svg { transform: none; }
   #skydiver { display: none; }
   .timeline-desc, .timeline-toggle svg { transition: none; }
 }

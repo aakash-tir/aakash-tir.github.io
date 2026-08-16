@@ -19,7 +19,7 @@ Vanilla HTML/CSS/JS static site.
 - GitHub bio: "Just a chill guy trying to code his way through life."
 
 ### Projects
-Source of truth is `js/data/projects.js` (`PROJECTS`); this table mirrors it. Each project has an area (`ai-ml` / `data` / `software`), a status, and an `added` date (newest shown first).
+Source of truth is `js/data/projects.js` (`PROJECTS`); this table mirrors it. Each project has an area (`ai-ml` / `data` / `software`), a status, an `added` date (newest shown first), a one-line `short` hook (all a collapsed card shows) and the full `desc` (revealed when the card expands to the centre of the screen).
 
 **In progress**
 | Project | Language | Notes |

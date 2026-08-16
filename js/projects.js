@@ -1,5 +1,6 @@
 /* ============ Project rendering + tabs ============ */
 import { PROJECTS } from "./data/projects.js";
+import { initProjectExpand, collapseNow } from "./project-expand.js";
 
 const grid = document.getElementById("project-grid");
 // Both the desktop row and the mobile groups use these; they stay in sync.
@@ -11,6 +12,9 @@ const GITHUB_ICON =
 
 const LOCK_ICON =
   '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>';
+
+const CHEVRON_ICON =
+  '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
 
 const STATUS_LABELS = { completed: "Completed", "in-progress": "In Progress" };
 
@@ -64,12 +68,19 @@ function cardHTML(p, i) {
           }
         </div>
         <h3>${p.title}</h3>
-        <p class="desc">${p.desc}</p>
+        <p class="desc desc-brief">${p.short}</p>
+        <p class="desc desc-full">${p.desc}</p>
         <ul class="project-tech">${p.tech.map((t) => `<li>${t}</li>`).join("")}</ul>
+        <button class="project-expand" type="button" aria-expanded="false">
+          <span class="project-expand-label">Details</span>${CHEVRON_ICON}
+        </button>
       </article>`;
 }
 
 function renderProjects() {
+  // Any expanded card is about to be replaced by the re-render — put it back
+  // first so it can't be left orphaned over an empty grid.
+  collapseNow();
   const PAGE_SIZE = pageSize();
   const items = SORTED_PROJECTS.filter((p) => projectMatches(p));
   const totalPages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
@@ -150,4 +161,5 @@ window.addEventListener(
   { passive: true }
 );
 
+initProjectExpand();
 renderProjects();
