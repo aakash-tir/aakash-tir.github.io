@@ -22,9 +22,10 @@ Vanilla HTML/CSS/JS, no build step. Source is split by concern.
 - `js/` — native ES modules loaded via `<script type="module">`:
   - `main.js` — entry point; imports one module per feature
   - `config.js` — shared `prefers-reduced-motion` flag
-  - `data/projects.js` — the `PROJECTS` list (add a project = add one object here)
+  - `data/projects.js` — the `PROJECTS` list (add a project = add one object here, with a `short` hook and a full `desc`)
   - `data/certifications.js` — the `CERTIFICATIONS` list + topic labels (add a cert = add one object here)
   - `projects.js`, `certifications.js`, `typing.js`, `reveal.js`, `nav.js`, `particles.js`, `skydiver.js`, `clock.js`, `mobile-nav.js`, `timeline.js` — one feature each
+  - `project-expand.js` — click a project card to morph it to the centre of the screen and back (imported by `projects.js`)
 
 ## Deploy
 

@@ -11,6 +11,7 @@
      data/projects.js the PROJECTS content list
      data/certifications.js the CERTIFICATIONS content list + topics
      projects.js      project grid: rendering, filter tabs, pagination
+     project-expand.js  card click -> morph to centre, click again -> back
      certifications.js certification cards: pinned grid + grouped "Show all"
      typing.js        hero typing/erasing headline
      reveal.js        scroll-reveal IntersectionObserver

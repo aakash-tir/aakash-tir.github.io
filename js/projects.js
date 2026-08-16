@@ -1,5 +1,6 @@
 /* ============ Project rendering + tabs ============ */
 import { PROJECTS } from "./data/projects.js";
+import { initProjectExpand, collapseNow } from "./project-expand.js";
 
 const grid = document.getElementById("project-grid");
 // Both the desktop row and the mobile groups use these; they stay in sync.
@@ -11,6 +12,9 @@ const GITHUB_ICON =
 
 const LOCK_ICON =
   '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>';
+
+const CHEVRON_ICON =
+  '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
 
 const STATUS_LABELS = { completed: "Completed", "in-progress": "In Progress" };
 
@@ -64,12 +68,19 @@ function cardHTML(p, i) {
           }
         </div>
         <h3>${p.title}</h3>
-        <p class="desc">${p.desc}</p>
+        <p class="desc desc-brief">${p.short}</p>
+        <p class="desc desc-full">${p.desc}</p>
         <ul class="project-tech">${p.tech.map((t) => `<li>${t}</li>`).join("")}</ul>
+        <button class="project-expand" type="button" aria-expanded="false">
+          <span class="project-expand-label">Details</span>${CHEVRON_ICON}
+        </button>
       </article>`;
 }
 
 function renderProjects() {
+  // Any expanded card is about to be replaced by the re-render — put it back
+  // first so it can't be left orphaned over an empty grid.
+  collapseNow();
   const PAGE_SIZE = pageSize();
   const items = SORTED_PROJECTS.filter((p) => projectMatches(p));
   const totalPages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
@@ -124,15 +135,65 @@ statusTabs.forEach((tab) => {
   });
 });
 
+// A new page is usually a different height, so the cards you just asked for
+// can end up above the fold — far enough that you're looking at the next
+// section. Pull the grid back under the nav, but only when it isn't already
+// fully in view, so paging through a short list doesn't twitch the page.
+// Absolute offset from the top of the document. Deliberately not derived from
+// getBoundingClientRect + scrollY: right after a page swap the browser is still
+// re-clamping the scroll position against the document's new height, so any
+// scroll-relative reading can be a frame stale. An offsetTop chain is pure
+// layout — independent of scroll position, and of the `.reveal` transforms
+// these elements may still be carrying.
+function documentTop(el) {
+  let y = 0;
+  for (let node = el; node; node = node.offsetParent) y += node.offsetTop;
+  return y;
+}
+
+function keepGridInView() {
+  // Deferred a frame on purpose. Shrinking the grid makes the browser adjust
+  // the scroll position itself, and it does that after this handler returns —
+  // judging the framing before then means judging a layout that is about to
+  // move out from under us.
+  requestAnimationFrame(() => {
+    const navH = document.getElementById("nav")?.offsetHeight ?? 0;
+    // Frame from the filter row rather than the grid itself: it costs a little
+    // height but keeps the tabs on screen, so it still reads as the Projects
+    // section rather than a bare shelf of cards. Whichever of the two filter
+    // layouts is showing at this breakpoint is the one with an offsetParent.
+    const filters = [...document.querySelectorAll(".filters-desktop, .filters-mobile")].find(
+      (el) => el.offsetParent !== null
+    );
+    const anchor = filters ?? grid;
+
+    // Already well framed — the tabs are clear of the fixed nav and the last
+    // card is above the fold. Leave the scroll alone so paging a short list
+    // doesn't twitch the page for no reason.
+    if (
+      anchor.getBoundingClientRect().top >= navH &&
+      grid.getBoundingClientRect().bottom <= window.innerHeight
+    ) {
+      return;
+    }
+
+    // No `behavior`: `html` carries `scroll-behavior: smooth`, which the
+    // reduced-motion block in responsive.css already switches to `auto`.
+    window.scrollTo({ top: documentTop(anchor) - navH - 16 });
+  });
+}
+
 prevBtn.addEventListener("click", () => {
   if (currentPage > 0) {
     currentPage--;
     renderProjects();
+    keepGridInView();
   }
 });
 nextBtn.addEventListener("click", () => {
   currentPage++;
   renderProjects();
+  keepGridInView();
 });
 
 // Re-paginate when crossing the mobile/desktop breakpoint (page size changes).
@@ -150,4 +211,5 @@ window.addEventListener(
   { passive: true }
 );
 
+initProjectExpand();
 renderProjects();
