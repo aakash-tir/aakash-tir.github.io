@@ -13,6 +13,13 @@
 
 /* Mobile two-group filters are hidden on desktop */
 .filters-mobile { display: none; }
+
+/* Paging scrolls the filter row back into view (js/projects.js); this keeps it
+   clear of the fixed nav when it does. */
+.filters-desktop,
+.filters-mobile {
+  scroll-margin-top: calc(var(--nav-h) + 1rem);
+}
 .tab-divider {
   width: 1px;
   align-self: stretch;
@@ -38,6 +45,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
+  /* Swapping to a page with fewer cards shrinks the grid, and scroll anchoring
+     would "helpfully" adjust the scroll position to compensate — which threw
+     the reader past the section entirely. js/projects.js decides where to
+     scroll after a page change instead. */
+  overflow-anchor: none;
 }
 
 .project-card {

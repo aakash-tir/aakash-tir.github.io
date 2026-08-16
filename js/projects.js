@@ -135,15 +135,65 @@ statusTabs.forEach((tab) => {
   });
 });
 
+// A new page is usually a different height, so the cards you just asked for
+// can end up above the fold — far enough that you're looking at the next
+// section. Pull the grid back under the nav, but only when it isn't already
+// fully in view, so paging through a short list doesn't twitch the page.
+// Absolute offset from the top of the document. Deliberately not derived from
+// getBoundingClientRect + scrollY: right after a page swap the browser is still
+// re-clamping the scroll position against the document's new height, so any
+// scroll-relative reading can be a frame stale. An offsetTop chain is pure
+// layout — independent of scroll position, and of the `.reveal` transforms
+// these elements may still be carrying.
+function documentTop(el) {
+  let y = 0;
+  for (let node = el; node; node = node.offsetParent) y += node.offsetTop;
+  return y;
+}
+
+function keepGridInView() {
+  // Deferred a frame on purpose. Shrinking the grid makes the browser adjust
+  // the scroll position itself, and it does that after this handler returns —
+  // judging the framing before then means judging a layout that is about to
+  // move out from under us.
+  requestAnimationFrame(() => {
+    const navH = document.getElementById("nav")?.offsetHeight ?? 0;
+    // Frame from the filter row rather than the grid itself: it costs a little
+    // height but keeps the tabs on screen, so it still reads as the Projects
+    // section rather than a bare shelf of cards. Whichever of the two filter
+    // layouts is showing at this breakpoint is the one with an offsetParent.
+    const filters = [...document.querySelectorAll(".filters-desktop, .filters-mobile")].find(
+      (el) => el.offsetParent !== null
+    );
+    const anchor = filters ?? grid;
+
+    // Already well framed — the tabs are clear of the fixed nav and the last
+    // card is above the fold. Leave the scroll alone so paging a short list
+    // doesn't twitch the page for no reason.
+    if (
+      anchor.getBoundingClientRect().top >= navH &&
+      grid.getBoundingClientRect().bottom <= window.innerHeight
+    ) {
+      return;
+    }
+
+    // No `behavior`: `html` carries `scroll-behavior: smooth`, which the
+    // reduced-motion block in responsive.css already switches to `auto`.
+    window.scrollTo({ top: documentTop(anchor) - navH - 16 });
+  });
+}
+
 prevBtn.addEventListener("click", () => {
   if (currentPage > 0) {
     currentPage--;
     renderProjects();
+    keepGridInView();
   }
 });
 nextBtn.addEventListener("click", () => {
   currentPage++;
   renderProjects();
+  keepGridInView();
 });
 
 // Re-paginate when crossing the mobile/desktop breakpoint (page size changes).
