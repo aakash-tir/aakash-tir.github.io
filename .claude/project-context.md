@@ -27,11 +27,11 @@ Source of truth is `js/data/projects.js` (`PROJECTS`); this table mirrors it. Ea
 | Newsletter Capture — AI Audio Briefing | Python · Google Cloud | Gmail newsletters → Claude-summarized script → TTS audio briefing on Google Drive; serverless (Cloud Functions + Firestore), 346-test suite. Private repo. |
 | Sinhala Learning App | React · Capacitor | Offline Sinhala-learning app; Android APK + iOS/web PWA. Private repo. |
 | Sign App — Learn ASL by Camera | React · TensorFlow.js | On-device ASL recognition (MediaPipe + TF.js), cross-platform PWA. Private repo. |
-| Glimpse — Desktop Weather App | TypeScript · Electron | Always-on Windows 11 weather app; Open-Meteo + NOAA space-weather. Private repo. |
 
 **Completed**
 | Project | Language | Notes |
 |---|---|---|
+| [Glimpse — Desktop Weather App](https://github.com/aakash-tir/glimpse) | TypeScript · Electron | Always-on Windows 11 weather app; Open-Meteo + NOAA space-weather + Environment Canada alerts. M0–M11 shipped as an NSIS installer; 1,031 automated tests. Public repo (MIT). |
 | [Blume — Resume & Portfolio Generator](https://github.com/COSC-499-W2025/capstone-project-team-6) | Python · React | COSC 499 capstone (team of 6); folder-traversal / project-identification module. |
 | [Jersey Number Recognition](https://github.com/carsonbennett1/Jersey-Number-Recognition-Project) | Python · PyTorch | COSC 419B computer-vision pipeline; 86.71% → 88.52% accuracy. |
 | [US Flight Delay Analysis](https://github.com/ubco-W2022T2-data301/project-group-group05) | pandas · Tableau | DATA 301 analysis of US flight delays (2019–2021). |
