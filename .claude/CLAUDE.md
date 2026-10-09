@@ -9,6 +9,7 @@ Interactive single-page portfolio for Aakash Tirathdas. Static site: vanilla HTM
 
 ## Conventions
 - **Merging to `main` publishes to production.** Never merge unless all CI checks pass and the change is up to publish standard — see `.claude/rules/merge-to-main.md`.
+- **CI is lean on Actions minutes:** `checks` runs on pull requests only, and only when a site file it reads changed (HTML, CSS, JS, images, the résumé PDF, the check scripts/configs). Nothing runs on the merge to `main`. Every check that started must be green; a docs-only PR starts none, and since `checks` is required on `main` it gets it via `gh workflow run ci.yml --ref <branch>`.
 - **Keep docs in sync with every code change**, in the same PR — see `.claude/rules/update-docs-after-changes.md`.
 - Vanilla HTML/CSS/JS, no build step; no frameworks or npm unless the owner asks. Source is split by concern:
   - `index.html` — all sections (hero, about, timeline, projects, certifications, contact).

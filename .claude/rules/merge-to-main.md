@@ -7,7 +7,7 @@ let CI go green, then merge.
 
 ## Required checks (must all pass before merge)
 
-These run in GitHub Actions on every PR to `main` (`.github/workflows/ci.yml`,
+These run in GitHub Actions on PRs to `main` (`.github/workflows/ci.yml`,
 job **`checks`**). They also run locally — run them before opening a PR:
 
 | Check | Command | What it guards |
@@ -20,9 +20,23 @@ job **`checks`**). They also run locally — run them before opening a PR:
 Config lives in `.htmlvalidate.json` and `.stylelintrc.json`. The rule sets are
 tuned to catch real breakage, not stylistic preference.
 
+## CI is lean on Actions minutes
+
+- **PR-only.** Nothing runs on the push to `main` — the PR already tested the exact
+  code. (GitHub's own "pages build and deployment" still publishes on that push.)
+- **Path-filtered.** `checks` starts only when a PR touches something it reads: any
+  `*.html`, `css/`, `js/`, `images/`, the résumé PDF, `scripts/`, `.htmlvalidate.json`,
+  `.stylelintrc.json` or the workflow itself. Docs-only PRs (`*.md`, `.claude/`,
+  `docs/`, `logs/`, `graphify-out/`) start no CI.
+- **Every check that started must be green**; `gh pr checks` lists only those.
+- **Docs-only PRs:** `checks` is still a required status on `main`, so dispatch it on
+  the branch and merge once green: `gh workflow run ci.yml --ref <branch>`.
+- When adding a check that reads a new kind of file, add that path to
+  `on.pull_request.paths` in the workflow too.
+
 ## "Up to publish standard" — the bar for merging
 
-- All required checks green.
+- All required checks that started are green.
 - No `<!-- TEMP -->` placeholder content anywhere (enforced by the publish-readiness check).
 - Every referenced image / résumé / asset is committed and resolves (enforced).
 - Manually verified: the affected change renders correctly (serve locally on port
