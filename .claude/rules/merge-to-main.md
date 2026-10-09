@@ -29,8 +29,9 @@ tuned to catch real breakage, not stylistic preference.
   `.stylelintrc.json` or the workflow itself. Docs-only PRs (`*.md`, `.claude/`,
   `docs/`, `logs/`, `graphify-out/`) start no CI.
 - **Every check that started must be green**; `gh pr checks` lists only those.
-- **Docs-only PRs:** `checks` is still a required status on `main`, so dispatch it on
-  the branch and merge once green: `gh workflow run ci.yml --ref <branch>`.
+- **No required status check** on `main` since 2026-10-09 (GitHub only requires a PR,
+  0 approvals), so a docs-only PR merges without CI. Never merging a red or running
+  `checks` is this rule, not a GitHub setting.
 - When adding a check that reads a new kind of file, add that path to
   `on.pull_request.paths` in the workflow too.
 
