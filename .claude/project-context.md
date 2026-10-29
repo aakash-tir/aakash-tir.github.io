@@ -24,7 +24,7 @@ Source of truth is `js/data/projects.js` (`PROJECTS`); this table mirrors it. Ea
 **In progress**
 | Project | Language | Notes |
 |---|---|---|
-| Newsletter Capture — AI Audio Briefing | Python · Google Cloud | Gmail newsletters → Claude-summarized script → TTS audio briefing on Google Drive; serverless (Cloud Functions + Firestore), 346-test suite. Private repo; public sign-up page linked on the card ("Subscribe" → https://newsletter-signup-zbbzy4yojq-uc.a.run.app). |
+| Newsletter Capture — AI Audio Briefing | Python · Google Cloud | Gmail newsletters → Claude-summarized script → TTS audio briefing on Google Drive; serverless (Cloud Functions + Firestore), 346-test suite. Card links the public self-hostable repo (https://github.com/aakash-tir/newsletter-audio-digest); the production repo stays private. |
 | Sinhala Learning App | React · Capacitor | Offline Sinhala-learning app; Android APK + iOS/web PWA. Private repo. |
 | Sign App — Learn ASL by Camera | React · TensorFlow.js | On-device ASL recognition (MediaPipe + TF.js), cross-platform PWA. Private repo. |
 

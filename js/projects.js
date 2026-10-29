@@ -16,9 +16,6 @@ const LOCK_ICON =
 const CHEVRON_ICON =
   '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
 
-const EXTERNAL_ICON =
-  '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>';
-
 const STATUS_LABELS = { completed: "Completed", "in-progress": "In Progress" };
 
 // Combined filter: a project shows only if it matches the selected area AND status.
@@ -74,16 +71,9 @@ function cardHTML(p, i) {
         <p class="desc desc-brief">${p.short}</p>
         <p class="desc desc-full">${p.desc}</p>
         <ul class="project-tech">${p.tech.map((t) => `<li>${t}</li>`).join("")}</ul>
-        <div class="project-actions">
-          <button class="project-expand" type="button" aria-expanded="false">
-            <span class="project-expand-label">Details</span>${CHEVRON_ICON}
-          </button>
-          ${
-            p.live
-              ? `<a class="project-live" href="${p.live.url}" target="_blank" rel="noopener" aria-label="${p.live.label}: ${p.title}">${p.live.label}${EXTERNAL_ICON}</a>`
-              : ""
-          }
-        </div>
+        <button class="project-expand" type="button" aria-expanded="false">
+          <span class="project-expand-label">Details</span>${CHEVRON_ICON}
+        </button>
       </article>`;
 }
 

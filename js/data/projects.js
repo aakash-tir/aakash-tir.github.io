@@ -8,9 +8,6 @@
 //         sentence (~15 words) — cards are clamped to 2 lines, so a longer one
 //         is silently truncated. This is the only copy most visitors read.
 // desc:   the full write-up, revealed when the card is clicked and expands.
-// url:    optional public GitHub repo; omit it and the card shows "Private".
-// live:   optional { url, label } for a public, usable page (demo, sign-up),
-//         shown as a small pill next to the GitHub link / Private badge.
 export const PROJECTS = [
   {
     title: "Newsletter Capture — AI Audio Briefing",
@@ -21,10 +18,10 @@ export const PROJECTS = [
     short:
       "Turns an inbox of newsletters into one narrated audio briefing each morning.",
     desc:
-      "An automated daily pipeline that turns a Gmail inbox full of newsletters into a single narrated audio briefing. Claude (via the Anthropic SDK) detects, deduplicates, categorizes, and summarizes newsletters into a conversational script, then a three-engine text-to-speech chain (OpenAI → Google Cloud TTS → gTTS) renders an MP3 delivered to Google Drive. Runs serverless on Google Cloud Functions with Firestore and powers a public subscriber service with topic-personalized audio and per-subscriber send times — backed by a 346-test suite.",
+      "An automated daily pipeline that turns a Gmail inbox full of newsletters into a single narrated audio briefing. Claude (via the Anthropic SDK) detects, deduplicates, categorizes, and summarizes newsletters into a conversational script, then a three-engine text-to-speech chain (OpenAI → Google Cloud TTS → gTTS) renders an MP3 delivered to Google Drive. Runs serverless on Google Cloud Functions with Firestore, backed by a 346-test suite. The public repo is a self-hostable version anyone can deploy to their own Google Cloud project.",
     tech: ["Python", "Anthropic API", "Google Cloud", "Firestore"],
-    // Private repository, but the subscriber sign-up page is public.
-    live: { url: "https://newsletter-signup-zbbzy4yojq-uc.a.run.app", label: "Subscribe" },
+    // Public, self-hostable source. The production repo stays private.
+    url: "https://github.com/aakash-tir/newsletter-audio-digest",
   },
   {
     title: "Sinhala Learning App",
