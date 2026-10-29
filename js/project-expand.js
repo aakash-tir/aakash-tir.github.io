@@ -214,7 +214,7 @@ export function initProjectExpand() {
   // <body> for the duration, so a grid-scoped listener would never see the
   // click that closes it.
   document.addEventListener("click", (e) => {
-    // The GitHub link is its own action — never let it toggle the card.
+    // The GitHub / live links are their own action — never let them toggle the card.
     if (e.target.closest("a")) return;
     const hit = e.target.closest(".project-card");
     if (!hit) return;

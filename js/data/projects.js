@@ -8,6 +8,9 @@
 //         sentence (~15 words) — cards are clamped to 2 lines, so a longer one
 //         is silently truncated. This is the only copy most visitors read.
 // desc:   the full write-up, revealed when the card is clicked and expands.
+// url:    optional public GitHub repo; omit it and the card shows "Private".
+// live:   optional { url, label } for a public, usable page (demo, sign-up),
+//         shown as a small pill next to the GitHub link / Private badge.
 export const PROJECTS = [
   {
     title: "Newsletter Capture — AI Audio Briefing",
@@ -20,7 +23,8 @@ export const PROJECTS = [
     desc:
       "An automated daily pipeline that turns a Gmail inbox full of newsletters into a single narrated audio briefing. Claude (via the Anthropic SDK) detects, deduplicates, categorizes, and summarizes newsletters into a conversational script, then a three-engine text-to-speech chain (OpenAI → Google Cloud TTS → gTTS) renders an MP3 delivered to Google Drive. Runs serverless on Google Cloud Functions with Firestore and powers a public subscriber service with topic-personalized audio and per-subscriber send times — backed by a 346-test suite.",
     tech: ["Python", "Anthropic API", "Google Cloud", "Firestore"],
-    // Private repository — no public link.
+    // Private repository, but the subscriber sign-up page is public.
+    live: { url: "https://newsletter-signup-zbbzy4yojq-uc.a.run.app", label: "Subscribe" },
   },
   {
     title: "Sinhala Learning App",
