@@ -18,9 +18,10 @@ export const PROJECTS = [
     short:
       "Turns an inbox of newsletters into one narrated audio briefing each morning.",
     desc:
-      "An automated daily pipeline that turns a Gmail inbox full of newsletters into a single narrated audio briefing. Claude (via the Anthropic SDK) detects, deduplicates, categorizes, and summarizes newsletters into a conversational script, then a three-engine text-to-speech chain (OpenAI → Google Cloud TTS → gTTS) renders an MP3 delivered to Google Drive. Runs serverless on Google Cloud Functions with Firestore and powers a public subscriber service with topic-personalized audio and per-subscriber send times — backed by a 346-test suite.",
+      "An automated daily pipeline that turns a Gmail inbox full of newsletters into a single narrated audio briefing. Claude (via the Anthropic SDK) detects, deduplicates, categorizes, and summarizes newsletters into a conversational script, then a three-engine text-to-speech chain (OpenAI → Google Cloud TTS → gTTS) renders an MP3 delivered to Google Drive. Runs serverless on Google Cloud Functions with Firestore, backed by a 346-test suite. The public repo is a self-hostable version anyone can deploy to their own Google Cloud project.",
     tech: ["Python", "Anthropic API", "Google Cloud", "Firestore"],
-    // Private repository — no public link.
+    // Public, self-hostable source. The production repo stays private.
+    url: "https://github.com/aakash-tir/newsletter-audio-digest",
   },
   {
     title: "Sinhala Learning App",
