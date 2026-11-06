@@ -41,13 +41,13 @@ export const PROJECTS = [
     cats: ["ai-ml", "software"],
     status: "in-progress",
     added: "2026-07-01",
-    lang: "React · TensorFlow.js",
+    lang: "React · ONNX Runtime Web",
     short:
       "Teaches sign language by watching you sign through the camera, on-device.",
     desc:
-      "A cross-platform PWA that teaches American Sign Language by watching you sign through the camera and giving instant, fully on-device feedback — no video ever leaves the device. MediaPipe extracts hand and pose landmarks and a TensorFlow.js classifier recognizes 24 fingerspelling letters plus 103 dynamic signs (honest cross-validated top-1 ≈ 0.69 across 114 classes). The single React + TypeScript codebase runs offline on Windows, Android, iOS, and Linux, with typo-tolerant sign search and a 57-sentence practice section.",
-    tech: ["React", "MediaPipe", "TensorFlow.js", "PWA"],
-    // Private repository — no public link.
+      "A cross-platform PWA that teaches American Sign Language by watching you sign through the camera and giving instant, fully on-device feedback — no video ever leaves the device. MediaPipe extracts hand and pose landmarks; a small MLP and an ONNX sequence model (trained in Python with scikit-learn and PyTorch) recognize 24 fingerspelling letters plus 103 dynamic signs (honest cross-validated top-1 ≈ 0.69 across 114 classes). The single React + TypeScript codebase runs offline on Windows, Android, iOS, and Linux, with typo-tolerant sign search and a 57-sentence practice section.",
+    tech: ["React", "MediaPipe", "ONNX Runtime Web", "PyTorch", "PWA"],
+    url: "https://github.com/aakash-tir/sign-app-public",
   },
   {
     title: "Glimpse — Desktop Weather App",
