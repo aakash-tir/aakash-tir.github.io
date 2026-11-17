@@ -15,6 +15,7 @@ Vanilla HTML/CSS/JS static site.
 
 ### Owner
 - Aakash Tirathdas — CS graduate (Class of 2026), UBC Okanagan; Data Science minor, First Class Standing
+- Based in Toronto, ON — open to relocation across Canada
 - GitHub: [aakash-tir](https://github.com/aakash-tir) · Email: aakashtirathdas@gmail.com
 - GitHub bio: "Just a chill guy trying to code his way through life."
 
