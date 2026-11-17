@@ -25,3 +25,4 @@ Interactive single-page portfolio for Aakash Tirathdas. Static site: vanilla HTM
 ## Owner facts
 - Name: Aakash Tirathdas · GitHub: `aakash-tir` · Email: aakashtirathdas@gmail.com
 - CS graduate (Class of 2026) from UBC Okanagan; Data Science minor, First Class Standing. COSC 499 capstone (Blume) completed.
+- Based in Toronto, ON (open to relocation across Canada).
