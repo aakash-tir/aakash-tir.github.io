@@ -52,3 +52,4 @@
 - 2026-10-29: Newsletter Capture card now links the public, self-hostable repo (https://github.com/aakash-tir/newsletter-audio-digest) in place of the "Private" badge; dropped the subscriber-service line from its description. The production repo (with the subscriber sign-up) stays private and isn't linked.
 - 2026-11-06: Sign App card now links the public repo (https://github.com/aakash-tir/sign-app-public, MIT, a redacted mirror that keeps the full history) in place of the "Private" note. Also corrected its stack: the app uses a JSON-weights MLP + ONNX Runtime Web, never TensorFlow.js.
 - 2026-11-17: Location updated from Kelowna, BC to Toronto, ON (About intro, quick-facts card, Contact).
+- 2026-11-17: Projects refreshed toward apps used daily: removed the Sinhala Learning App (stale); added Nova, Skillbook, Movie Tracker and Double A PDFs. All four are private repos and their cards carry no links (no repo URL, no live-app URL).
