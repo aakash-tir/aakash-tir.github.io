@@ -10,6 +10,58 @@
 // desc:   the full write-up, revealed when the card is clicked and expands.
 export const PROJECTS = [
   {
+    title: "Nova — Always-On AI Assistant",
+    cats: ["ai-ml", "software"],
+    status: "in-progress",
+    added: "2026-11-17",
+    lang: "Python · React",
+    short:
+      "My always-on AI assistant: triages my inbox 24/7 and does the work I hand it.",
+    desc:
+      "A personal assistant that runs around the clock on my desktop and that I talk to through Slack, a web dashboard, or Siri on my phone. A free local model (Qwen via Ollama) triages every new email, event and message as it arrives; real work goes to a Claude Opus orchestrator (Claude Agent SDK) that dispatches Sonnet and local-Qwen subagents for research, planning and job hunting, and asks for my approval before anything risky. It manages my calendar, tasks, habits, sleep and goals, and connects to my other apps (Skillbook, Movie Tracker) over MCP so I can just tell it what to log. FastAPI backend, React dashboard, Docker, full CI with Playwright end-to-end tests.",
+    tech: ["Python", "FastAPI", "Claude Agent SDK", "Ollama", "React", "MCP"],
+    // Private repository — no public link.
+  },
+  {
+    title: "Skillbook — Skill Practice Journal",
+    cats: ["ai-ml", "software"],
+    status: "completed",
+    added: "2026-11-17",
+    lang: "React · Supabase",
+    short:
+      "One book per skill: log practice as pages, get AI progress summaries.",
+    desc:
+      "A journal for skill progression that I use daily: each skill is its own book, each practice session a page you can flip back through like a real book. Tracks streaks and totals, and Claude writes weekly and monthly summaries of how a skill is coming along (batched through the Message Batches API to keep it cheap). Offline-first with IndexedDB (Dexie) and its own outbox sync to Supabase (Postgres + RLS, Auth, Storage, Edge Functions), installable as a PWA on phone and desktop, and exposed as an OAuth-protected MCP server so my assistant can log sessions for me.",
+    tech: ["React", "TypeScript", "Supabase", "Anthropic API", "PWA"],
+    // Private repository — no public link.
+  },
+  {
+    title: "Movie Tracker",
+    cats: ["software"],
+    status: "completed",
+    added: "2026-11-17",
+    lang: "Flutter · Supabase",
+    short:
+      "Tracks every movie and show I watch, synced across phone and desktop.",
+    desc:
+      "A cross-platform tracker for movies and TV that I use every day on my phone and PC. One Flutter codebase for Windows, Android and iOS: library statuses, 1–10 ratings, per-episode TV progress, TMDB search through a Cloudflare Worker proxy, and \"For You\" recommendations seeded from my rated history. Offline-first on a local SQLite database (drift) with Supabase cloud sync and last-write-wins merging, Letterboxd import and RSS sync, and a remote MCP server with OAuth sign-in so AI agents can read and update the library.",
+    tech: ["Flutter", "Dart", "Supabase", "SQLite", "MCP"],
+    // Private repository — no public link.
+  },
+  {
+    title: "Double A PDFs — Local PDF Editor",
+    cats: ["software"],
+    status: "completed",
+    added: "2026-11-17",
+    lang: "Python · React",
+    short:
+      "A free desktop PDF editor that never uploads your files anywhere.",
+    desc:
+      "A PDF editor for Windows that does what Acrobat charges a subscription for, entirely on your own machine: edit, sign, redact, OCR and convert, with no account, no network and no telemetry. A Python engine built on PyMuPDF does the PDF work behind a React + pdf.js interface in a native desktop window, with optional Tesseract OCR and LibreOffice/Chromium conversions. Ships with a one-command installer, and the editing engine also runs as an MCP server so AI agents can work on PDFs directly.",
+    tech: ["Python", "PyMuPDF", "React", "TypeScript", "MCP"],
+    // Private repository — no public link.
+  },
+  {
     title: "Newsletter Capture — AI Audio Briefing",
     cats: ["ai-ml", "software"],
     status: "in-progress",
@@ -22,19 +74,6 @@ export const PROJECTS = [
     tech: ["Python", "Anthropic API", "Google Cloud", "Firestore"],
     // Public, self-hostable source. The production repo stays private.
     url: "https://github.com/aakash-tir/newsletter-audio-digest",
-  },
-  {
-    title: "Sinhala Learning App",
-    cats: ["software"],
-    status: "in-progress",
-    added: "2026-07-02",
-    lang: "React · Capacitor",
-    short:
-      "Takes a complete beginner to conversational Sinhala, fully offline.",
-    desc:
-      "A free phone app that takes a complete beginner to conversational, literate Sinhala across four skills — listening, speaking, reading, and writing. One React + TypeScript codebase ships as a native Android APK (Capacitor) and an installable iPhone/web PWA, fully offline with bundled TTS audio and a 3-tier speech-recognition fallback so speaking practice never blocks progress. Features a lesson player with XP and streaks plus eight exercise types; Unit 0 delivers 5 lessons across 46 exercises.",
-    tech: ["React", "TypeScript", "Capacitor", "PWA"],
-    // Private repository — no public link.
   },
   {
     title: "Sign App — Learn ASL by Camera",
